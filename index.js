@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');
 const dotenv = require('dotenv');
 const coneccionDB = require('./database/config');
 const bodyParser = require("body-parser");
@@ -12,12 +13,15 @@ coneccionDB();
 const app = express();// crear el servidor
 const puerto = process.env.PORT || 5000; // asignar puerto
 
-//middlewares
-app.use(cors());// habilitar CORS
-
-// habilitar body-parser
+// Body parser, leer formularios
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended : true }));
+
+// habilitar CORS
+app.use(cors());
+
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, './public')));
 
 // rutas de la app
 app.use("/tareas", rutas());

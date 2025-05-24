@@ -3,16 +3,12 @@ const router = express.Router();
 
 const tareaController = require('../controllers/TareaController');
 
+    router.get('/', tareaController.getTodasTareas)// obtener todas las tareas
+    router.post('/', tareaController.crearTarea); // crear una tarea
+    router.get('/:id',tareaController.getTareaID)// obtener una tarea
+    router.put('/:id',tareaController.actualizarTarea)// actualizar una tarea
+    router.delete('/:id', tareaController.eliminarTarea);// eliminar una tarea
+
 module.exports = function() {
-
-    router.route('/')
-    .get(tareaController.getTodasTareas)// obtener todas las tareas
-    .post(tareaController.crearTarea); // crear una tarea
-
-    router.route('/:id')
-    .get(tareaController.getTareaID)// obtener una tarea
-    .put(tareaController.actualizarTarea)// actualizar una tarea
-    .delete(tareaController.eliminarTarea);// eliminar una tarea
-
     return router;
 }
