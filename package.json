@@ -4,7 +4,8 @@
   "description": "Es la presentacion del trabajo final de programacion 2 que se trata app de lista de tareas",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js"
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js"
   },
   "author": "Jonas Martinez",
   "license": "ISC",
