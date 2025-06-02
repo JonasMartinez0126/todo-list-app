@@ -6,7 +6,10 @@ const Tarea = require('../models/Tarea');
 // access  Public
 exports.getTodasTareas = async (req, res) => {
     try {
-        const tareas = await Tarea.find().sort({ fechaCreacion: -1 });
+        const tareas = await Tarea.find().sort({ estado: -1, fechaCreacion: -1 });// se ordena por estado y fecha de creación
+        if (!tareas || tareas.length === 0) {
+            return res.status(404).json({ message: 'No se encontraron tareas' });
+        }
         res.status(200).json(tareas);
     } catch (error) {
         res.status(500).json({ message: error.message });
