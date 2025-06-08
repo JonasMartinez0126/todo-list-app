@@ -1,33 +1,66 @@
 <!DOCTYPE html>
+<!-- Declaración del tipo de documento HTML5 -->
 <html lang="es">
+  <!-- Inicio del documento HTML en español -->
   <head>
     <meta charset="UTF-8" />
+    <!-- Codificación de caracteres UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Responsive para móviles -->
     <title>Gestor de tareas</title>
+    <!-- Título de la pestaña del navegador -->
     <link rel="stylesheet" href="./styles.css" />
+    <!-- Enlace al archivo de estilos CSS -->
   </head>
   <body>
     <h1 class="title-page">Gestor de tareas</h1>
+    <!-- Título principal de la página -->
 
-     <div class="list roundBorder">
-        <div class="date">
-            <div class="dateRight">
-                <div id="dateNumber"></div>
-                <div>
-                    <div id="dateMonth"></div>
-                    <div id="dateYear"></div>
-                </div>
-            </div>
-            <div id="dateText"></div>
+    <div class="list roundBorder">
+      <!-- Contenedor principal de la lista de tareas -->
+      <div class="date">
+        <!-- Contenedor de la fecha -->
+        <div class="dateRight">
+          <!-- Contenedor para el número y año/mes -->
+          <div id="dateNumber"></div>
+          <!-- Día del mes -->
+          <div>
+            <div id="dateMonth"></div>
+            <!-- Mes -->
+            <div id="dateYear"></div>
+            <!-- Año -->
+          </div>
         </div>
-        <form onsubmit="addNewTask(event)" >
-            <input type="text" name="taskText" autocomplete="off" placeholder="Nueva tarea" class="roundBorder">
-            <button type="submit" class="addTaskButton">+</button>
-            <button type="button" class="orderButton roundBorder" onclick="orderTasks()">Ordenar</button>
-        </form>
-        <div id="tasksContainer"></div>
+        <div id="dateText"></div>
+        <!-- Día de la semana -->
+      </div>
+      <form onsubmit="addNewTask(event)">
+        <!-- Formulario para agregar nuevas tareas -->
+        <input
+          type="text"
+          name="taskText"
+          autocomplete="off"
+          placeholder="Nueva tarea"
+          class="roundBorder"
+          required
+        />
+        <!-- Campo de texto para la nueva tarea -->
+        <button type="submit" class="addTaskButton">+</button>
+        <!-- Botón para agregar tarea -->
+        <button
+          type="button"
+          class="orderButton roundBorder"
+          onclick="orderTasks()"
+        >
+          Ordenar
+        </button>
+        <!-- Botón para ordenar tareas -->
+      </form>
+      <div id="tasksContainer"></div>
+      <!-- Contenedor donde se mostrarán las tareas -->
     </div>
 
     <script src="./app.js"></script>
+    <!-- Enlace al archivo JavaScript principal -->
   </body>
 </html>

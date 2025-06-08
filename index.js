@@ -1,32 +1,33 @@
-const express = require("express");
-const path = require('path');
-const dotenv = require('dotenv');
-const coneccionDB = require('./database/config');
-const bodyParser = require("body-parser");
-const rutas = require("./routes");
-const cors = require("cors");// CORS permite que un cliente se conecte a otro servidor para el intercambio de recursos
+const express = require("express"); // Framework principal para el servidor
+const path = require('path'); // Módulo para manejar rutas de archivos
+const dotenv = require('dotenv'); // Cargar variables de entorno desde .env
+const coneccionDB = require('./database/config'); // Función para conectar a la base de datos
+const bodyParser = require("body-parser"); // Middleware para parsear el cuerpo de las peticiones
+const rutas = require("./routes"); // Importa las rutas de la aplicación
+const cors = require("cors"); // Middleware para habilitar CORS
 
-dotenv.config();
-// conectar a mongoDB
+dotenv.config(); // Carga las variables de entorno
+
+// Conectar a MongoDB
 coneccionDB();
 
-const app = express();// crear el servidor
-const puerto = process.env.PORT || 5000; // asignar puerto
+const app = express(); // Crear la aplicación de Express
+const puerto = process.env.PORT || 5000; // Puerto del servidor
 
-// Body parser, leer formularios
+// Body parser, para leer datos en formato JSON y formularios
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true }));
 
-// habilitar CORS
-app.use(cors());
+// Habilitar CORS para permitir peticiones de otros orígenes
+app.use(cors());s
 
 // Servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(__dirname, './public')));
 
-// rutas de la app
+// Usar las rutas definidas para el recurso /tareas
 app.use("/tareas", rutas());
 
-// Inicia el servidor en el puerto especificado
+// Iniciar el servidor en el puerto especificado
 app.listen(puerto, () => {
   console.log(`Servidor escuchando en http://localhost:${puerto}`);
 });
