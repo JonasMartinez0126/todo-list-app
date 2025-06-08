@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true }));
 
 // Habilitar CORS para permitir peticiones de otros orígenes
-app.use(cors());s
+app.use(cors());
 
 // Servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(__dirname, './public')));
